@@ -1,0 +1,189 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Manishpatil7975/AIML_ASSIGNMENTS/blob/main/assignment%203\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def coin_flip_probabilities(heads, tails):\n",
+        "    total = heads + tails\n",
+        "    p_heads = heads / total\n",
+        "    p_tails = tails / total\n",
+        "    return p_heads, p_tails\n",
+        "\n",
+        "heads = 60\n",
+        "tails = 40\n",
+        "p_heads, p_tails = coin_flip_probabilities(heads, tails)\n",
+        "\n",
+        "print(\"P(Heads):\", p_heads)\n",
+        "print(\"P(Tails):\", p_tails)\n"
+      ],
+      "metadata": {
+        "id": "Pi_3WvDZTLCE",
+        "outputId": "5383bb11-52da-4ba2-db39-5f92f98054db",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "P(Heads): 0.6\n",
+            "P(Tails): 0.4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def bayes_theorem(p_disease, p_pos_given_disease, p_pos_given_no_disease):\n",
+        "    p_no_disease = 1 - p_disease\n",
+        "    # Total probability of testing positive\n",
+        "    p_pos = (p_pos_given_disease * p_disease) + (p_pos_given_no_disease * p_no_disease)\n",
+        "    # Bayes' Theorem\n",
+        "    p_disease_given_pos = (p_pos_given_disease * p_disease) / p_pos\n",
+        "    return p_disease_given_pos\n",
+        "\n",
+        "p_disease = 0.01\n",
+        "p_pos_given_disease = 0.99\n",
+        "p_pos_given_no_disease = 0.05\n",
+        "\n",
+        "p_result = bayes_theorem(p_disease, p_pos_given_disease, p_pos_given_no_disease)\n",
+        "print(\"\\nP(Disease | Positive Test):\", round(p_result, 4))\n"
+      ],
+      "metadata": {
+        "id": "Md3hBoJhTU7r",
+        "outputId": "60fcf903-e37b-4720-c90f-29d7390b03f8",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "P(Disease | Positive Test): 0.1667\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def derivative(x):\n",
+        "    \"\"\"\n",
+        "    Derivative of f(x) = 3x^2 + 2x - 5 is f'(x) = 6x + 2\n",
+        "    \"\"\"\n",
+        "    return 6 * x + 2\n",
+        "\n",
+        "x_val = 1.0\n",
+        "print(\"\\nDerivative at x =\", x_val, \"is\", derivative(x_val))\n"
+      ],
+      "metadata": {
+        "id": "Panf0ELPTnvj",
+        "outputId": "740a161b-7b57-4372-c305-8309b4daca3c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Derivative at x = 1.0 is 8.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def f(x):\n",
+        "    return 3*x**2 + 2*x - 5\n",
+        "\n",
+        "def grad_f(x):\n",
+        "    return 6*x + 2  # Derivative\n",
+        "\n",
+        "# Gradient Descent Implementation\n",
+        "x = 3.0           # initial guess\n",
+        "lr = 0.1          # learning rate\n",
+        "epochs = 10\n",
+        "\n",
+        "print(\"\\nGradient Descent Steps:\")\n",
+        "for i in range(epochs):\n",
+        "    grad = grad_f(x)\n",
+        "    x = x - lr * grad\n",
+        "    print(f\"Step {i+1}: x = {x:.4f}, f(x) = {f(x):.4f}\")\n"
+      ],
+      "metadata": {
+        "id": "toi92KOMTrfy",
+        "outputId": "bd713442-7f58-4d61-b5f2-bc847a208953",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Gradient Descent Steps:\n",
+            "Step 1: x = 1.0000, f(x) = 0.0000\n",
+            "Step 2: x = 0.2000, f(x) = -4.4800\n",
+            "Step 3: x = -0.1200, f(x) = -5.1968\n",
+            "Step 4: x = -0.2480, f(x) = -5.3115\n",
+            "Step 5: x = -0.2992, f(x) = -5.3298\n",
+            "Step 6: x = -0.3197, f(x) = -5.3328\n",
+            "Step 7: x = -0.3279, f(x) = -5.3332\n",
+            "Step 8: x = -0.3311, f(x) = -5.3333\n",
+            "Step 9: x = -0.3325, f(x) = -5.3333\n",
+            "Step 10: x = -0.3330, f(x) = -5.3333\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# New Section"
+      ],
+      "metadata": {
+        "id": "eEad-5EtTN5V"
+      }
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Welcome To Colab",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
